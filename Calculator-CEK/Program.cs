@@ -67,7 +67,8 @@ namespace Calculator_CEK
             var firstNumber = RetrieveNumber("Please enter a number.");
             var secondNumber = RetrieveNumber("Please enter a second number.");
 
-            var rgx = new Regex("[a-zA-Z0-9]");
+            //Remove any alphanumeric characters to allow users to mistype and the program still works.
+            var rgx = new Regex("[a-zA-Z0-9 ]");
             operation = rgx.Replace(operation, "");
 
             switch (operation)
