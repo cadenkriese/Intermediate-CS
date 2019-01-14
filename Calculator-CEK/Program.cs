@@ -135,7 +135,7 @@ namespace Calculator_CEK
             return double.TryParse(numberInput, out var doubleInput) ? doubleInput : double.MinValue;
         }
 
-        private static Boolean GoAgane()
+        private static bool GoAgane()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Would you like to go again?");
