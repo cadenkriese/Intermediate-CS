@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Calculator_CEK
 {
     internal static class CalculatorCek
     {
-        private static Boolean _goNext = true;
+        private static bool _goNext = true;
 
         private static void Main()
         {
@@ -27,16 +28,24 @@ namespace Calculator_CEK
                     "\\___/\\____/_/ /_/____/\\____/_/\\___/   \\___/\\__,_/_/\\___/\\__,_/_/\\__,_/\\__/\\____/_/     ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Welcome to ConsoleCalculator V1.0");
-                Console.WriteLine("Valid operators, +, -, *, /, %, abs, sin, cos, tan, end");
+                Console.WriteLine("Valid operators, +, -, *, /, %, abs, sin, cos, tan");
 
                 //Ask for operation first so we know the amount of inputs required.
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Please enter an operation.");
                 var operation = Console.In.ReadLine();
 
+                var multiNumOperations = new List<string> { "+", "-", "*", "/", "%" };
+                var singleNumberOperations = new List<string> { "abs", "sin", "cos", "tan" };
+
+                if (!multiNumOperations.Contains(operation) && !singleNumberOperations.Contains(operation))
+                {
+                    Error("Invalid operation!");
+                    continue;
+                }
+                
                 //Perform calculations that only require one number first.
-                if (operation.ToLower().Equals("sin") || operation.ToLower().Equals("cos") ||
-                    operation.ToLower().Equals("tan") || operation.ToLower().Equals("abs"))
+                if (singleNumberOperations.Contains(operation))
                 {
                     var input = RetrieveNumber("Enter a number.");
                     operation = operation.ToLower();
@@ -66,13 +75,16 @@ namespace Calculator_CEK
 
                 //Run operations that require 2 numbers.
                 var firstNumber = RetrieveNumber("Please enter a number.");
-                var secondNumber = RetrieveNumber("Please enter a second number.");
-
-                if (firstNumber == double.MinValue || secondNumber == double.MinValue)
+                if (firstNumber == double.MinValue)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Invalid number!");
-                    _goNext = GoAgane();
+                    Error("Invalid number!");
+                    continue;
+                }
+                
+                var secondNumber = RetrieveNumber("Please enter a second number.");
+                if (secondNumber == double.MinValue)
+                {
+                    Error("Invalid number!");
                     continue;
                 }
 
@@ -90,25 +102,22 @@ namespace Calculator_CEK
                     case "/":
                         if (secondNumber == 0)
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Cannot divide by 0!");
-                            _goNext = GoAgane();
+                            Error("Cannot divide by 0!");
                             continue;
                         }
 
-                        String remainder = (firstNumber % secondNumber != 0 && ((int)firstNumber / (int)secondNumber != 0)) ? " with a remainder of " + firstNumber % secondNumber : "";
-                        Console.WriteLine(firstNumber + " / " + secondNumber + " = " + ((int)firstNumber / (int)secondNumber) + remainder);
+                        var remainder = firstNumber % secondNumber != 0 && (int)firstNumber / (int)secondNumber != 0 ? " with a remainder of " + firstNumber % secondNumber : "";
+                        Console.WriteLine(firstNumber + " / " + secondNumber + " = " + (int)firstNumber / (int)secondNumber + remainder);
                         break;
                     case "%":
                         Console.WriteLine(firstNumber + " % " + secondNumber + " = " + firstNumber % secondNumber);
                         break;
                     default:
-                        Console.WriteLine("Invalid operation!");
+                        Error("Invalid operation!");
                         break;
                 }
 
                 _goNext = GoAgane();
-                continue;
             }
         }
 
@@ -139,8 +148,15 @@ namespace Calculator_CEK
 
         private static double ConvertRadiansToDegrees(double radians)
         {
-            double degrees = (180 / Math.PI) * radians;
-            return (degrees);
+            double degrees = 180 / Math.PI * radians;
+            return degrees;
+        }
+
+        private static void Error(String error)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(error);
+            _goNext = GoAgane();
         }
     }
 }
