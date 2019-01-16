@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello-CEK", "Hello-CEK\Hell
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator-CEK", "Calculator-CEK\Calculator-CEK.csproj", "{33881BC3-6F60-4112-9A28-88DC2B3CF040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberGuess-CEK", "NumberGuess-CEK\NumberGuess-CEK.csproj", "{B0CB4CF0-148A-4B0C-A2EC-6473C8555D81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuessTheNumber-CEK", "GuessTheNumber-CEK\GuessTheNumber-CEK.csproj", "{BA6015BC-5E05-451A-BB17-DCCFB3A6C6DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +20,9 @@ Global
 		{33881BC3-6F60-4112-9A28-88DC2B3CF040}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33881BC3-6F60-4112-9A28-88DC2B3CF040}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33881BC3-6F60-4112-9A28-88DC2B3CF040}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0CB4CF0-148A-4B0C-A2EC-6473C8555D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0CB4CF0-148A-4B0C-A2EC-6473C8555D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0CB4CF0-148A-4B0C-A2EC-6473C8555D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0CB4CF0-148A-4B0C-A2EC-6473C8555D81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6015BC-5E05-451A-BB17-DCCFB3A6C6DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6015BC-5E05-451A-BB17-DCCFB3A6C6DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6015BC-5E05-451A-BB17-DCCFB3A6C6DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6015BC-5E05-451A-BB17-DCCFB3A6C6DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

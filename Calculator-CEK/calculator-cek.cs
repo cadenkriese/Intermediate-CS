@@ -1,6 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
+/***********************************************************************
+*
+*  Filename : calculator-cek.cs
+*  Author : Caden Kriese
+*  Purpose : The console calculator allows the user to perform numerous
+*     operations within the console, first by specifying the operation
+*     and then by providing one or two numbers. The valid operations are
+*     +, -, *, /, %, abs, sin, cos and tan.
+*
+*  Note : All divisions will return an integer with an integer remainder
+*    (if applicable).
+*
+***********************************************************************/
 namespace Calculator_CEK
 {
     internal static class CalculatorCek
