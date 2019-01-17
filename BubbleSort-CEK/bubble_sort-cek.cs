@@ -2,7 +2,7 @@
 
 /***********************************************************************
 *
-*  Filename : calculator-cek.cs
+*  Filename : bubble_sort-cek.cs
 *  Author : Caden Kriese
 *  Purpose : The bubble sort takes a input of numbers and outputs them
 *      back to the user sorted smallest to largest, or bubble sorted. 
