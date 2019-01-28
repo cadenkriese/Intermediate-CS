@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuessTheNumber-CEK", "Guess
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BubbleSort-CEK", "BubbleSort-CEK\BubbleSort-CEK.csproj", "{D52B1E77-22AE-40C0-A426-E9B696EBBD80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO-CEK", "IO-CEK\IO-CEK.csproj", "{913A9442-99F0-46C0-B9AE-8C874D34CB6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputOutput-CEK", "InputOutput-CEK\InputOutput-CEK.csproj", "{913A9442-99F0-46C0-B9AE-8C874D34CB6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

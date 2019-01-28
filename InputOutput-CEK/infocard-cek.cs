@@ -1,8 +1,16 @@
 using System;
 
+/***********************************************************************
+*
+*  Filename : infocard-cek.cs
+*  Author : Caden Kriese
+*  Purpose : Handle the storage, input and output of user data. This class
+* will be instantiated and utilized throughout the main class.
+*
+***********************************************************************/
 namespace IO_CEK
 {
-    public class User
+    public class InfoCard
     {
         private string name;
         private string address;
@@ -22,12 +30,13 @@ namespace IO_CEK
 
         public void Output()
         {
+            //Output user information in a readable format.
             Console.Out.WriteLine(name);
             Console.Out.WriteLine(address);
             Console.Out.WriteLine(city + ", "+state + " " + zipCode);
         }
         
-        private static String RequestInput(String prompt)
+        private static string RequestInput(string prompt)
         {
             //Print line prompting user for input.
             Console.Out.WriteLine(prompt);
