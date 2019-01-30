@@ -2,7 +2,7 @@ using System;
 
 /***********************************************************************
 *
-*  Filename : infocard-cek.cs
+*  Filename : infocard.cs
 *  Author : Caden Kriese
 *  Purpose : Handle the storage, input and output of user data. This class
 * will be instantiated and utilized throughout the main class.
