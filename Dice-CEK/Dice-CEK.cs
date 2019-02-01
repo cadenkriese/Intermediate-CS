@@ -12,15 +12,19 @@ namespace Dice_CEK
 {
     static class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             int diceAmount = Convert.ToInt32(RequestInput("Enter the number of dice to roll: "));
 
+            Console.ForegroundColor = ConsoleColor.Magenta;
             //Roll dice i amount of times
             for (int i = 0; i < diceAmount; i++)
             {
-                new Dice().roll();
+                new Dice().Roll();
             }
+            
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         /// <summary>

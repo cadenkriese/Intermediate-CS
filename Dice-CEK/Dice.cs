@@ -28,56 +28,56 @@ namespace Dice_CEK
             id = count;
         }
 
-        public void roll()
+        public void Roll()
         {
             //Random int 1-6
             int next = random.Next(5) + 1;
             
             //Preset lines
-            String lineOfZero = "\u007c            \u007c";
-            String lineOfOne = "\u007c      \u2022      \u007c";
-            String lineOfTwo = "\u007c   \u2022     \u2022    \u007c";
+            const string lineOfZero = "\u007c            \u007c";
+            const string lineOfOne = "\u007c     \u2022      \u007c";
+            const string lineOfTwo = "\u007c  \u2022     \u2022   \u007c";
 
             //Lines that will be displayed
-            String diceLineOne = "";
-            String diceLineTwo = "";
-            String diceLineThree = "";
+            string diceLineOne = "";
+            string diceLineTwo = "";
+            string diceLineThree = "";
 
-            //Define layouts for each dice version.          
             switch (next)
             {
+                //Define layouts for each dice version.          
                 case 1:
-                    diceLineOne = new String(lineOfZero);
-                    diceLineTwo = new String(lineOfOne);
-                    diceLineThree = new String(lineOfZero);
+                    diceLineOne = new string(lineOfZero);
+                    diceLineTwo = new string(lineOfOne);
+                    diceLineThree = new string(lineOfZero);
                     break;
-                case 2 :
-                    diceLineOne = new String(lineOfZero);
-                    diceLineTwo = new String(lineOfTwo);
-                    diceLineThree = new String(lineOfZero);
+                case 2:
+                    diceLineOne = new string(lineOfZero);
+                    diceLineTwo = new string(lineOfTwo);
+                    diceLineThree = new string(lineOfZero);
                     break;
-                case 3 :
-                    diceLineOne = new String(lineOfOne);
-                    diceLineTwo = new String(lineOfOne);
-                    diceLineThree = new String(lineOfOne);
+                case 3:
+                    diceLineOne = new string(lineOfOne);
+                    diceLineTwo = new string(lineOfOne);
+                    diceLineThree = new string(lineOfOne);
                     break;
-                case 4 :
-                    diceLineOne = new String(lineOfTwo);
-                    diceLineTwo = new String(lineOfZero);
-                    diceLineThree = new String(lineOfTwo);
+                case 4:
+                    diceLineOne = new string(lineOfTwo);
+                    diceLineTwo = new string(lineOfZero);
+                    diceLineThree = new string(lineOfTwo);
                     break;
-                case 5 :
-                    diceLineOne = new String(lineOfTwo);
-                    diceLineTwo = new String(lineOfOne);
-                    diceLineThree = new String(lineOfTwo);
+                case 5:
+                    diceLineOne = new string(lineOfTwo);
+                    diceLineTwo = new string(lineOfOne);
+                    diceLineThree = new string(lineOfTwo);
                     break;
-                case 6 :
-                    diceLineOne = new String(lineOfTwo);
-                    diceLineTwo = new String(lineOfTwo);
-                    diceLineThree = new String(lineOfTwo);
+                case 6:
+                    diceLineOne = new string(lineOfTwo);
+                    diceLineTwo = new string(lineOfTwo);
+                    diceLineThree = new string(lineOfTwo);
                     break;
             }
-            
+
             Console.Out.WriteLine(
                 //corner ------------ corner
                 "\u231C\u2015\u2015\u2015\u2015\u2015\u2015\u2015\u2015\u2015\u2015\u2015\u2015\u231D\n" +
