@@ -16,8 +16,8 @@ namespace Cards_CEK
         private static void Main()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            //int cardCount = RequestNumericalInput("Enter a number of cards: ");
-            for (int i = 0; i < int.MaxValue; i++)
+            int cardCount = RequestNumericalInput("Enter a number of cards: ");
+            for (int i = 0; i < cardCount; i++)
             {
                 new Card().print();
             }
