@@ -16,7 +16,7 @@ namespace Quiz_CEK
             new Question("What was the US population in 1920?", "107M", 
                 new [] {"64M", "37M", "49M", "100M"}).Print();
             new Question("How many moles of carbon in 1.204x10^24 particles of carbon?", "2.0*10^0", 
-                new [] {"3.42*10^-12", "4.72*10^3", "2", "I refuse to revisit my dark past with moles."}).Print();
+                new [] {"3.42*10^-12", "4.72*10^3", "4", "I refuse to revisit my dark past with moles."}).Print();
             
             
             Console.ForegroundColor = ConsoleColor.White;
