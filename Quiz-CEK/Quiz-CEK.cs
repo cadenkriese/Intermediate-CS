@@ -2,20 +2,33 @@
 
 namespace Quiz_CEK
 {
-    class QuizCEK
+    class QuizCek
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            new Question("Whats 2+2?", "4", new [] {"3", "5", "1.321x10^24"}).print();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("");
+            
+            //TODO track correct answers.
+            
+            new Question("How many teams are in the NFL?", "32", 
+                new [] {"42", "26", "50"}).Print();
+            new Question("What was the US population in 1920?", "107M", 
+                new [] {"64M", "37M", "49M", "100M"}).Print();
+            new Question("How many moles of carbon in 1.204x10^24 particles of carbon?", "2.0*10^0", 
+                new [] {"3.42*10^-12", "4.72*10^3", "2", "I refuse to revisit my dark past with moles."}).Print();
+            
+            
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 
     class Question
     {
         private static Random rand;
-        private String question;
-        private String correctAnswer;
-        private String[] wrongAnswers;
+        private string question;
+        private string correctAnswer;
+        private string[] wrongAnswers;
 
         public Question(String question, String correctAnswer, String[] wrongAnswers)
         {
@@ -27,8 +40,12 @@ namespace Quiz_CEK
             this.wrongAnswers = wrongAnswers;
         }
 
-        public void print()
+        public void Print()
         {
+            //Space out console
+            Console.WriteLine("");
+            Console.WriteLine("");
+            
             int correctAnswerPos = rand.Next(wrongAnswers.Length);
             
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -39,13 +56,16 @@ namespace Quiz_CEK
             {
                 if (i == correctAnswerPos) {
                     Console.WriteLine(NumberToString(i) + ") "+correctAnswer);
+                    Console.WriteLine(NumberToString(i+1) + ") "+wrongAnswers[i]);
                 }
-                else
+                else if (i > correctAnswerPos)
                 {
                     Console.WriteLine(NumberToString(i+1) + ") "+wrongAnswers[i]);
                 }
-                
-                Console.WriteLine(NumberToString(i) + ") "+wrongAnswers[i]);
+                else
+                {
+                    Console.WriteLine(NumberToString(i) + ") "+wrongAnswers[i]);
+                }
             }
 
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -59,7 +79,7 @@ namespace Quiz_CEK
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid input!");
-                print();
+                Print();
                 return;
             }
 
