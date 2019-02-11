@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 /***********************************************************************
 *
@@ -13,6 +14,7 @@
 
 namespace GuessTheNumber_CEK
 {
+    [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
     internal static class GuessTheNumberCek
     {
         private static void Main(string[] args)
@@ -31,9 +33,9 @@ namespace GuessTheNumber_CEK
                 {
                     //They have guessed the max amount of times and failed.
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Out.WriteLine("You are out of guesses! Would you like to go again?");
+                    Console.WriteLine("You are out of guesses! Would you like to go again?");
 
-                    if (Console.In.ReadLine().Equals("yes", StringComparison.InvariantCultureIgnoreCase))
+                    if (Console.ReadLine().Equals("yes"))
                     {
                         Main(args);
                     }
@@ -52,7 +54,7 @@ namespace GuessTheNumber_CEK
 
                 if (input == int.MinValue)
                 {
-                    Console.Out.WriteLine("Invalid input!");
+                    Console.WriteLine("Invalid input!");
                     continue;
                 }
                 
@@ -60,11 +62,11 @@ namespace GuessTheNumber_CEK
                 {
                     //They guessed the correct number
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Out.WriteLine("Congratulations! The number was "+randomGoal+".");
-                    Console.Out.WriteLine("Would you like to go again?");
+                    Console.WriteLine("Congratulations! The number was "+randomGoal+".");
+                    Console.WriteLine("Would you like to go again?");
 
                     //Ask if they want to go again.
-                    if (Console.In.ReadLine().Equals("yes", StringComparison.InvariantCultureIgnoreCase))
+                    if (Console.ReadLine().ToLower().Equals("yes"))
                     {
                         Main(args);
                     }
@@ -93,26 +95,26 @@ namespace GuessTheNumber_CEK
                 if (difference < 20)
                     //Range 0-19
                 {
-                    Console.Out.WriteLine("Your guess was slightly too "+highLow+".");
+                    Console.WriteLine("Your guess was slightly too "+highLow+".");
                 } else if (difference < 40)
                     //Range 20-39
                 {
-                    Console.Out.WriteLine("Your guess was too "+highLow+".");
+                    Console.WriteLine("Your guess was too "+highLow+".");
                 }
                 else if (difference  < 60)
                     //Range 40-59
                 {
-                    Console.Out.WriteLine("Your guess was slightly too "+highLow+".");
+                    Console.WriteLine("Your guess was slightly too "+highLow+".");
                 }
                 else
                     //Range 60-99
                 {
-                    Console.Out.WriteLine("Your guess was way too "+highLow+".");
+                    Console.WriteLine("Your guess was way too "+highLow+".");
                 }
 
                 remainingGuesses--;
                 //Print their remaining guesses (using proper grammar of course).
-                Console.Out.WriteLine("You have "+remainingGuesses+" guess"+(remainingGuesses == 1 ? "" : "es")+" remaining.");
+                Console.WriteLine("You have "+remainingGuesses+" guess"+(remainingGuesses == 1 ? "" : "es")+" remaining.");
             }
 
             Console.ForegroundColor = ConsoleColor.White;
@@ -121,7 +123,7 @@ namespace GuessTheNumber_CEK
         private static int RetrieveNumber(string request)
         {
             Console.WriteLine(request);
-            String numberInput = Console.In.ReadLine();
+            String numberInput = Console.ReadLine();
             return int.TryParse(numberInput, out var intInput) ? intInput : int.MinValue;
         }
     }
