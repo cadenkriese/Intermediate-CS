@@ -31,7 +31,7 @@ namespace Dice_CEK
         public void Roll()
         {
             //Random int 1-6
-            int next = random.Next(5) + 1;
+            int next = random.Next(6) + 1;
             
             //Preset lines
             const string lineOfZero = "\u007c            \u007c";
