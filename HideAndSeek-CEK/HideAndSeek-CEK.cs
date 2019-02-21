@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 
+/***********************************************************************
+*
+*  Filename : HideAndSeek-CEK.cs
+*  Author : Caden Kriese
+*  Purpose : The program stores a list of hiders with randomly generated
+*  x and y coordinates within bounds specified by the user. The user is 
+*  then required to move themselves around using inputs W, A, S, and D
+*  for up, down, left and right respectively. The Users end goal is to
+*  locate the hiders based on the distance they are from each hider which
+*  is provided to them each time they move. 
+*
+***********************************************************************/
 namespace HideAndSeek_CEK
 {
     class HideAndSeekCEK
@@ -29,6 +41,7 @@ namespace HideAndSeek_CEK
             //While at least one hasn't been found.
             while (!hiders.TrueForAll(hider => hider.Found))
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Your current position is ("+user.X+","+user.Y+").");
                 String move = RequestMovementInput();
 
@@ -69,7 +82,19 @@ namespace HideAndSeek_CEK
                 foreach (var hider in hiders)
                 {
                     double distance = user.CalculateDistance(hider);
-                    Console.ForegroundColor = distance < 3 || hider.Found ? ConsoleColor.Green : ConsoleColor.DarkGreen;
+
+                    if (distance < 3 || hider.Found)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else if (distance < 5)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
 
                     if (distance == 0 || hider.Found)
                     {
@@ -87,6 +112,8 @@ namespace HideAndSeek_CEK
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Congratulations you have found all of the hiders!");
+            
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         private static int RequestNumericalInput(string prompt)
@@ -182,7 +209,7 @@ namespace HideAndSeek_CEK
             int xDiff = X - location.X;
             int yDiff = Y - location.Y;
     
-            return Math.Sqrt(xDiff*xDiff + yDiff*yDiff);
+            return Math.Sqrt(Math.Pow(xDiff, 2) + Math.Pow(yDiff, 2));
         }
     }
 }
