@@ -83,11 +83,11 @@ namespace HideAndSeek_CEK
                 {
                     double distance = user.CalculateDistance(hider);
 
-                    if (distance < 3 || hider.Found)
+                    if (distance <= 3 || hider.Found)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                     }
-                    else if (distance < 5)
+                    else if (distance <= 5)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                     }
