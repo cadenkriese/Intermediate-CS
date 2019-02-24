@@ -19,18 +19,24 @@ namespace HideAndSeek_CEK
     class HideAndSeekCEK
     {
         private static List<Location> hiders = new List<Location>();
-        private static Location user = new Location(0, 0);
+        private static Location user = new Location(5, 5);
+        private static int mapSize;
+        private static int[,] board;
     
         static void Main()
         {
-            int mapSize = RequestNumericalInput("How large would you like the arena to be?");
+            mapSize = RequestNumericalInput("How large would you like the arena to be?");
             int hidersAmount = RequestNumericalInput("How many hiders would you like to play against?");
 
             int[] xValues = CalculateRandoms(hidersAmount, 0, mapSize);
             int[] yValues = CalculateRandoms(hidersAmount, 0, mapSize);
 
+            board = new int[mapSize, mapSize];
+
             for (int i = 0; i < hidersAmount; i++)
             {
+                //Board values in y, x because of how it's printed.
+                board[xValues[i], yValues[i]] = 1;
                 hiders.Add(new Location(xValues[i], yValues[i]));
             }
 
@@ -108,6 +114,8 @@ namespace HideAndSeek_CEK
                     
                     i++;
                 }
+                
+                PrintBoard();
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -188,6 +196,42 @@ namespace HideAndSeek_CEK
             }
             
             return randoms;
+        }
+
+        private static void PrintBoard()
+        {
+            for (int x = mapSize-1; x >= 0; x--)
+            {
+                for (int y = 0; y < mapSize; y++)
+                {
+                    if (x == user.X && y == user.Y)
+                    {
+                        if (board[x, y] == 1)
+                            board[x, y] = 2;
+
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("X ");
+                    }
+                    else if (board[x, y] == 2)
+                    {
+                        board[x, y] = 2;
+                        
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("\u2713 ");
+                    }
+                    else if (board[x, y] == 1 || new Random().Next((int) Math.Pow(mapSize, 2)) < mapSize)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write("? ");
+                    } 
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write("# ");
+                    }
+                }
+                    Console.WriteLine();
+            }
         }
     }
 
