@@ -19,18 +19,22 @@ namespace HideAndSeek_CEK
     class HideAndSeekCEK
     {
         private static List<Location> hiders = new List<Location>();
-        private static Location user = new Location(5, 5);
+        private static Location user;
         private static int mapSize;
         private static int[,] board;
+        private static Random rand;
     
         static void Main()
         {
+            rand = new Random();
+            
             mapSize = RequestNumericalInput("How large would you like the arena to be?");
             int hidersAmount = RequestNumericalInput("How many hiders would you like to play against?");
 
             int[] yValues = CalculateRandoms(hidersAmount, 0, mapSize);
             int[] xValues = CalculateRandoms(hidersAmount, 0, mapSize);
 
+            user = new Location(mapSize/2, mapSize/2);
             board = new int[mapSize, mapSize];
 
             for (int i = 0; i < hidersAmount; i++)
@@ -67,14 +71,14 @@ namespace HideAndSeek_CEK
                         break;
                 }
 
-                if (user.Y > mapSize || user.Y < 0 || user.X > mapSize || user.X < 0)
+                if (user.Y >= mapSize || user.Y < 0 || user.X >= mapSize || user.X < 0)
                 {
                     //Revert their movement.
-                    if (user.Y > mapSize)
+                    if (user.Y >= mapSize)
                         user.Y--;
                     else if (user.Y < 0)
                         user.Y++;
-                    else if (user.X > mapSize)
+                    else if (user.X >= mapSize)
                         user.X--;
                     else if (user.X < 0)
                         user.X++;
@@ -223,7 +227,7 @@ namespace HideAndSeek_CEK
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write("\u2713 ");
                     }
-                    else if (board[y, x] == 1 || new Random().Next((int) Math.Pow(mapSize, 2)) < mapSize)
+                    else if (board[y, x] == 1 || rand.Next((int) Math.Pow(mapSize, 2)) < mapSize)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.Write("? ");
