@@ -54,30 +54,30 @@ namespace HideAndSeek_CEK
                 switch (move)
                 {
                     case "W":
-                        user.X++;
-                        break;
-                    case "S": 
-                        user.X--;
-                        break;
-                    case "D": 
                         user.Y++;
                         break;
-                    case "A": 
+                    case "S": 
                         user.Y--;
+                        break;
+                    case "D": 
+                        user.X++;
+                        break;
+                    case "A": 
+                        user.X--;
                         break;
                 }
 
-                if (user.X > mapSize || user.X < 0 || user.Y > mapSize || user.Y < 0)
+                if (user.Y > mapSize || user.Y < 0 || user.X > mapSize || user.X < 0)
                 {
                     //Revert their movement.
-                    if (user.X > mapSize)
-                        user.X--;
-                    else if (user.X < 0)
-                        user.X++;
-                    else if (user.Y > mapSize)
+                    if (user.Y > mapSize)
                         user.Y--;
                     else if (user.Y < 0)
                         user.Y++;
+                    else if (user.X > mapSize)
+                        user.X--;
+                    else if (user.X < 0)
+                        user.X++;
                     
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("You hit the border of the map!");
@@ -89,6 +89,7 @@ namespace HideAndSeek_CEK
                 {
                     double distance = user.CalculateDistance(hider);
 
+                    //Change color depending on distance.
                     if (distance <= 3 || hider.Found)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -185,6 +186,7 @@ namespace HideAndSeek_CEK
             return response;
         }
 
+        //Generates an array of random numbers.
         private static int[] CalculateRandoms(int amount, int minInclusive, int maxExclusive)
         {
             Random rand = new Random();
@@ -200,26 +202,28 @@ namespace HideAndSeek_CEK
 
         private static void PrintBoard()
         {
-            for (int x = mapSize-1; x >= 0; x--)
+            //Loop through Y backwards to print out the map properly in console.
+            for (int y = mapSize-1; y >= 0; y--)
             {
-                for (int y = 0; y < mapSize; y++)
+                for (int x = 0; x < mapSize; x++)
                 {
-                    if (x == user.X && y == user.Y)
+                    //Print the correct character and character color.
+                    if (y == user.Y && x == user.X)
                     {
-                        if (board[x, y] == 1)
-                            board[x, y] = 2;
+                        if (board[y, x] == 1)
+                            board[y, x] = 2;
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("X ");
                     }
-                    else if (board[x, y] == 2)
+                    else if (board[y, x] == 2)
                     {
-                        board[x, y] = 2;
+                        board[y, x] = 2;
                         
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write("\u2713 ");
                     }
-                    else if (board[x, y] == 1 || new Random().Next((int) Math.Pow(mapSize, 2)) < mapSize)
+                    else if (board[y, x] == 1 || new Random().Next((int) Math.Pow(mapSize, 2)) < mapSize)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.Write("? ");
@@ -230,22 +234,24 @@ namespace HideAndSeek_CEK
                         Console.Write("# ");
                     }
                 }
-                    Console.WriteLine();
+                
+                //Move on to a new line.
+                Console.WriteLine();
             }
         }
     }
 
     class Location
     {
-        public int X;
         public int Y;
+        public int X;
 
         public bool Found;
         
-        public Location(int x, int y)
+        public Location(int y, int x)
         {
-            X = x;
             Y = y;
+            X = x;
         }
 
         public double CalculateDistance(Location location)
@@ -253,7 +259,7 @@ namespace HideAndSeek_CEK
             int xDiff = X - location.X;
             int yDiff = Y - location.Y;
     
-            return Math.Sqrt(Math.Pow(xDiff, 2) + Math.Pow(yDiff, 2));
+            return Math.Sqrt(Math.Pow(yDiff, 2) + Math.Pow(xDiff, 2));
         }
     }
 }
