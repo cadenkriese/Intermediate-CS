@@ -28,16 +28,16 @@ namespace HideAndSeek_CEK
             mapSize = RequestNumericalInput("How large would you like the arena to be?");
             int hidersAmount = RequestNumericalInput("How many hiders would you like to play against?");
 
-            int[] xValues = CalculateRandoms(hidersAmount, 0, mapSize);
             int[] yValues = CalculateRandoms(hidersAmount, 0, mapSize);
+            int[] xValues = CalculateRandoms(hidersAmount, 0, mapSize);
 
             board = new int[mapSize, mapSize];
 
             for (int i = 0; i < hidersAmount; i++)
             {
                 //Board values in y, x because of how it's printed.
-                board[xValues[i], yValues[i]] = 1;
-                hiders.Add(new Location(xValues[i], yValues[i]));
+                board[yValues[i], xValues[i]] = 1;
+                hiders.Add(new Location(yValues[i], xValues[i]));
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
