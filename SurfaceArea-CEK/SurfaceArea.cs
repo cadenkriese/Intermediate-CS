@@ -13,8 +13,6 @@ namespace SurfaceArea_CEK
             prism.OutputVolume();
             prism.CalculateSurfaceArea();
             prism.OutputSurfaceArea();
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 
