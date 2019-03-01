@@ -2,11 +2,11 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.2</TargetFramework>
-        <RootNamespace>SurfaceArea_CEK</RootNamespace>
+        <RootNamespace>CheckWriter_CEK</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="RectPrism">
-          <HintPath>RectPrism.dll</HintPath>
+        <Reference Include="CheckWriter">
+          <HintPath>check.dll</HintPath>
         </Reference>
     </ItemGroup>
 </Project>
