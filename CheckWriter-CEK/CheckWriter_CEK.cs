@@ -1,6 +1,17 @@
-﻿using System;
+using System;
 using CheckWriter;
 
+/***********************************************************************
+*
+*  Filename : CheckWriter_CEK.cs
+*  Author : Caden Kriese
+*  Purpose : The CheckWriter is program is designed to format the given 
+*  input (Name and amount) into a check format. This program utilizes 
+*  another program also named CheckWriter to retrieve the data, such as
+*  check number, from the bankning database. However, we override the
+*  output method to support modern dates.
+*
+***********************************************************************/
 namespace CheckWriter_CEK
 {
     class CheckWriter_CEK
@@ -17,62 +28,18 @@ namespace CheckWriter_CEK
         {
             int width = 65;
             
+            //Generate formatted date string, EX: March 5, 2019
             string date = DateTime.Today.ToString("MMMM dd, yyyy");
             string amountString = "$ " + Amount;
-                
+
+            Console.Out.WriteLine(new String(' ', width-Number.ToString().Length) + Number);
             Console.Out.WriteLine(new string(' ', width-date.Length)+date);
             Console.Out.WriteLine("Pay to the ");
             Console.Out.WriteLine("Order of: "+Payee);
             Console.Out.WriteLine(new String(' ', width-amountString.Length)+amountString);
-            Console.Out.WriteLine(strAmount + " " + new String('~', width-strAmount.Length-9)+ " Dollars");
-        }
-        
-        private static string NumberToWords(int number)
-        {
-            if (number == 0)
-                return "zero";
-            if (number < 0)
-                return "minus " + NumberToWords(Math.Abs(number));
-            string words = "";
-            
-            if (number / 1000000 > 0)
-            {
-                words += NumberToWords(number / 1000000) + " million ";
-                number %= 1000000;
-            }
-
-            if (number / 1000 > 0)
-            {
-                words += NumberToWords(number / 1000) + " thousand ";
-                number %= 1000;
-            }
-
-            if (number / 100 > 0)
-            {
-                words += NumberToWords(number / 100) + " hundred ";
-                number %= 100;
-            }
-
-            if (number > 0)
-            {
-                if (words != "")
-                    words += "and ";
-
-                var unitsMap = new[] { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", 
-                    "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
-                    "eighteen", "nineteen" };
-                var tensMap = new[] { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
-
-                if (number < 20)
-                    words += unitsMap[number];
-                else
-                {
-                    words += tensMap[number / 10];
-                    if (number % 10 > 0)
-                        words += "-" + unitsMap[number % 10];
-                }
-            }
-            return words;
+            //Additional -2 due to 2 spaces on either side of the ~~~~~~~~.
+            String dollar = Amount == 1 ? "Dollar" : "Dollars";
+            Console.Out.WriteLine(strAmount + " " + new String('~', width-strAmount.Length-dollar.Length-2) + " "+dollar);
         }
     }
 }
