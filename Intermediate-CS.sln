@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurfaceArea-CEK", "SurfaceA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckWriter-CEK", "CheckWriter-CEK\CheckWriter-CEK.csproj", "{203BAD92-543C-4A9A-8ABC-90324040E039}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionCalculator-CEK", "FractionCalculator-CEK\FractionCalculator-CEK.csproj", "{BC1F4E96-1E44-453F-8287-598715835D9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,9 @@ Global
 		{203BAD92-543C-4A9A-8ABC-90324040E039}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{203BAD92-543C-4A9A-8ABC-90324040E039}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{203BAD92-543C-4A9A-8ABC-90324040E039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC1F4E96-1E44-453F-8287-598715835D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC1F4E96-1E44-453F-8287-598715835D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC1F4E96-1E44-453F-8287-598715835D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC1F4E96-1E44-453F-8287-598715835D9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
