@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="17dfa1f4-e5f6-4fe5-9b07-14a52665c2dd"
+    Name="caf7d249-dcac-46c0-8dd5-ef28fe40cf0d"
     Publisher="CN=kriesece"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="17dfa1f4-e5f6-4fe5-9b07-14a52665c2dd" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="caf7d249-dcac-46c0-8dd5-ef28fe40cf0d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>ComplexDrawing-CEK</DisplayName>
+    <DisplayName>SimplePlatformer-CEK</DisplayName>
     <PublisherDisplayName>kriesece</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="ComplexDrawing_CEK.App">
+      EntryPoint="SimplePlatformer_CEK.App">
       <uap:VisualElements
-        DisplayName="ComplexDrawing-CEK"
+        DisplayName="SimplePlatformer-CEK"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="ComplexDrawing-CEK"
+        Description="SimplePlatformer-CEK"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
